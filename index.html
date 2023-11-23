@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadados do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título da página -->
+    <title>Toggle Dark Mode</title>
+
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilo padrão do corpo da página */
+        body {
+            transition: background-color 0.5s; /* Transição suave para a mudança de cor de fundo */
+        }
+
+        /* Estilo para o modo claro */
+        .light-theme {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Estilo para o modo escuro */
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* Estilo para o botão de alternância (inicialmente oculto) */
+        #toggle-btn {
+            display: none;
+        }
+
+        /* Estilo para o rótulo do botão de alternância */
+        #toggle-label {
+            display: inline-block;
+            background-color: #2196F3;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilo para o rótulo do botão de alternância quando hover */
+        #toggle-label:hover {
+            background-color: #0e71e0;
+        }
+
+        /* Estilo para o rótulo do botão de alternância quando o botão está marcado (checked) */
+        #toggle-btn:checked + #toggle-label {
+            background-color: #333;
+        }
+
+        /* Estilo para o ícone do sol (☀️) antes do rótulo quando o botão está marcado (checked) */
+        #toggle-btn:checked + #toggle-label::before {
+            content: "☀️";
+        }
+
+        /* Estilo para o ícone da lua (🌙) antes do rótulo */
+        #toggle-label::before {
+            content: "🌙";
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="light-theme"> <!-- Inicialmente, o corpo da página tem a classe light-theme -->
+
+    <!-- Botão de alternância oculto -->
+    <input type="checkbox" id="toggle-btn">
+    
+    <!-- Rótulo estilizado como botão -->
+    <label for="toggle-btn" id="toggle-label"></label>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Obtenha referências para o botão de alternância e o corpo da página
+        const toggleBtn = document.getElementById('toggle-btn');
+        const body = document.body;
+
+        // Adicione um ouvinte de evento para a mudança no botão de alternância
+        toggleBtn.addEventListener('change', () => {
+            // Alternar a classe dark-theme no corpo da página com base no estado do botão de alternância
+            body.classList.toggle('dark-theme', toggleBtn.checked);
+        });
+    </script>
+</body>
+</html>
